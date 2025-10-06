@@ -42,5 +42,9 @@ extern "C" LIB_EXPORT_API double Calculation1D(double x, int fType, int fNum);
 extern "C" LIB_EXPORT_API double Calculation(double x, double y);
 extern "C" LIB_EXPORT_API double GetUpperBounds();
 extern "C" LIB_EXPORT_API double GetLowerBounds();
+
+extern "C" LIB_EXPORT_API double CalculationND(double* x, int dim);
+extern "C" LIB_EXPORT_API double GetUpperBoundND(int num, int dim);
+extern "C" LIB_EXPORT_API double GetLowerBoundND(int num, int dim);
 #endif
 // - end of file ----------------------------------------------------------------------------------

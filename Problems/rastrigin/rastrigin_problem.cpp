@@ -173,4 +173,53 @@ LIB_EXPORT_API double GetLowerBounds()
   result = Lower[0];
   return result;
 }
+
+// ------------------------------------------------------------------------------------------------
+LIB_EXPORT_API double CalculationND(double* x, int dim)
+{
+    double result = 0;
+    RastriginProblem rastr;
+    rastr.SetDimension(dim);
+    rastr.Initialize();
+    std::vector<std::string> u;
+    std::vector<double> vec(x, x + dim);
+    result = rastr.CalculateFunctionals(vec, u, 0);
+
+    //std::cout << "Calculation\n" << std::endl;
+    return result;
+}
+
+// ------------------------------------------------------------------------------------------------
+LIB_EXPORT_API double GetUpperBoundND(int num, int dim)
+{
+    double result = 0;
+
+    RastriginProblem rastr;
+    rastr.SetDimension(dim);
+    rastr.Initialize();
+    std::vector<double> Upper = { 0.0, 0.0 };
+    std::vector<double> Lower = { 0.0, 0.0 };
+    rastr.GetBounds(Lower, Upper);
+
+    result = Upper[num];
+
+    return result;
+}
+
+// ------------------------------------------------------------------------------------------------
+LIB_EXPORT_API double GetLowerBoundND(int num, int dim)
+{
+    double result = 0;
+
+    RastriginProblem rastr;
+    rastr.SetDimension(dim);
+    rastr.Initialize();
+    std::vector<double> Upper = { 0.0, 0.0 };
+    std::vector<double> Lower = { 0.0, 0.0 };
+    rastr.GetBounds(Lower, Upper);
+
+    result = Lower[num];
+
+    return result;
+}
 // - end of file ----------------------------------------------------------------------------------
